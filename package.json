@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "nodemon ./bin/www",
-    "styles" : "sass ./public/stylesheets/style.scss ./public/stylesheets/style.css"
+    "styles": "sass ./public/stylesheets/style.scss ./public/stylesheets/style.css"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",

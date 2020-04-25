@@ -20,22 +20,32 @@
     margin-left:4%;
 }
 #header{
-    margin-left: 10%;
+    margin-left: 12%;
+    font-family: 'Bebas Neue', cursive; 
+    font-size: 2rem; 
+    
 }
 #header2{
-    margin-left:30%;
+    margin-left:23%;
+    font-family: 'Bebas Neue', cursive; 
+    font-size: 2rem; 
 }
 #header3{
-    margin-left:23%;
+    margin-left:20%;
+    font-family: 'Bebas Neue', cursive; 
+    font-size: 2rem; 
 }
 #receive{
     margin-left:29%;
 }
 .jumbotron{
-    height:350px;
+    height:400px;
 }
 #thirdimage{
     width: 28%;
     height: auto;
     margin-left:4%;
+}
+.login{
+    margin-right: 350px;
 }

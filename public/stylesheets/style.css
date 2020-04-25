@@ -1,9 +1,5 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-#site-title {
-  font-family: 112px "Bebas Neue", cursive;
-}
-
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -9879,6 +9875,9 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+#site-title {
+  font-family: 112px "Bebas Neue", cursive;
 }
 
 /*# sourceMappingURL=style.css.map */

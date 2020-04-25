@@ -3,10 +3,26 @@
 .site-title {
     font-family: 'Bebas Neue', cursive; 
     font-size: 8rem;  
-};
+}
 
 .header-font {
     font-family: 'Bebas Neue', cursive;
 }
 
 
+#firstimage{
+    width: 28%;
+    height: auto;
+    margin-left:3%;
+}
+#secondimage{
+    width: 28%;
+    height: auto;
+    margin-left:3%;
+}
+#header{
+    margin-left: 10%;
+}
+#receive{
+    margin-left:29%;
+}

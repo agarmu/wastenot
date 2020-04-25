@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 #site-title{
-    font-family: 'Bebas Neue', cursive, 120px ;   
-}
-
-.site-title {
-    font-size: 112px;
+    font-family: 'Bebas Neue'; 
 }
 #firstimage{
     width: 28%;
-    height: auto;
+    height: Auto;
     margin-left:3%;
 }
 #secondimage{
@@ -20,6 +16,14 @@
 #header{
     margin-left: 10%;
 }
-#recieve{
+#receive{
     margin-left:29%;
+}
+.jumbotron{
+    height:350px;
+}
+#thirdimage{
+    width: 28%;
+    height: auto;
+    margin-right:3%;
 }

@@ -6,6 +6,8 @@ html
     link(rel='stylesheet', href='/stylesheets/custom.css')
   body
     script(src="/javascripts/bootstrap.min.js")
-    
+    div(class='jumbotron big-banner text-center bg-secondary text-white')
+        h1(class='site-title')= title
+        h3= description
     
     block content

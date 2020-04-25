@@ -1,0 +1,22 @@
+{
+  "name": "new-website",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "popper.js": "^1.16.1",
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}

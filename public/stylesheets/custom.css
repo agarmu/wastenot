@@ -12,7 +12,7 @@
 
 #firstimage{
     width: 28%;
-    height: auto;
+    height: Auto;
     margin-left:3%;
 }
 #secondimage{
@@ -25,4 +25,12 @@
 }
 #receive{
     margin-left:29%;
+}
+.jumbotron{
+    height:350px;
+}
+#thirdimage{
+    width: 28%;
+    height: auto;
+    margin-left:3%
 }

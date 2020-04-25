@@ -1,13 +1,19 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
+const aboutRouter = require("./routes/about");
+const contributeRouter = require("./routes/contribute");
+const donateRouter = require("./routes/donate");
+const mapRouter = require("./routes/map");
+const receiveRouter = require("./routes/receive");
+const dn2Router = require("./routes/dn2")
 
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,6 +26,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/index', indexRouter);
+app.use('/home', indexRouter);
+app.use('/about', aboutRouter);
+app.use('/contribute', contributeRouter);
+app.use('/donate', donateRouter);
+app.use('/map', mapRouter);
+app.use('/receive', receiveRouter);
+app.use('/recieve', receiveRouter);
+app.use('/dn2', dn2Router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

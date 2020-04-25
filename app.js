@@ -10,7 +10,7 @@ const contributeRouter = require("./routes/contribute");
 const donateRouter = require("./routes/donate");
 const mapRouter = require("./routes/map");
 const receiveRouter = require("./routes/receive");
-const dn2Router = require("./routes/dn2")
+
 
 
 const app = express();
@@ -34,7 +34,6 @@ app.use('/donate', donateRouter);
 app.use('/map', mapRouter);
 app.use('/receive', receiveRouter);
 app.use('/recieve', receiveRouter);
-app.use('/dn2', dn2Router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

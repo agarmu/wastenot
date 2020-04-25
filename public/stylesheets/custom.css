@@ -4,11 +4,10 @@
     font-family: 'Bebas Neue', cursive; 
     font-size: 8rem;  
 }
-
-.header-font {
-    font-family: 'Bebas Neue', cursive;
+.donationHeading {
+    font-family: 'Bebas Neue', cursive; 
+    font-size: 4rem;  
 }
-
 
 #firstimage{
     width: 28%;
@@ -22,6 +21,12 @@
 }
 #header{
     margin-left: 10%;
+}
+#header2{
+    margin-left:30%;
+}
+#header3{
+    margin-left:23%;
 }
 #receive{
     margin-left:29%;

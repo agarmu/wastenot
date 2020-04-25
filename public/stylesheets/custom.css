@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.header-font {
-    font-family: 'Bebas Neue', cursive;   
+.site-title {
+    font-family: 'Bebas Neue', cursive; 
+    font-size: 8rem;  
 };
 
-.site-title {
-    font-size: 112px;
-};
+.header-font {
+    font-family: 'Bebas Neue', cursive;
+}
+
 

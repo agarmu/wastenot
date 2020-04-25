@@ -1,1 +1,14 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+$theme-colors: (
+    "primary" : darken(#5cb85c, 20%),
+    "secondary":lighten(#5cb85c, 10%),
+    "success": darken(#428bca, 6.5%),
+    "info" : #5bd4d4,
+    "warning" : #b6be44,
+    "danger" : #b93e3e
+
+);
 @import "../../node_modules/bootstrap/scss/bootstrap";

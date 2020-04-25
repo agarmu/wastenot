@@ -4,7 +4,7 @@ html
     title= title
     link(rel= 'stylesheet', href='/stylesheets/boots.css')
     link(rel='stylesheet', href='/stylesheets/custom.css')
-  body
+  body  
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       a.navbar-brand(href='#') Navbar
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
@@ -12,14 +12,15 @@ html
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
           li.nav-item.active
-            a.nav-link(href='#') Home 
-          span.sr-only (current)
-          li.nav-item
-            a.nav-link(href='#') Donate
-          li.nav-item
-            a.nav-link(href='#') Recieve
+            a.nav-link(href='#') Home
+              span.sr-only (current)
           li.nav-item
             a.nav-link(href='#') About
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Participate
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='#') Donate
+              a.dropdown-item(href='#') Receive
           li.nav-item
-            a.nav-link(href='#') Map
+            a.nav-link(href='#', tabindex='-1') Contribute
     block content

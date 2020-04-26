@@ -1,19 +1,37 @@
 extends layout
 
 block content
-    table(class='table')
-        thead
-            tr
-                th(scope="col") #
-                th(scope="col") Name
-                th(scope="col") Email
-                th(scope="col") Address
-        each instance, index in data
-            tr
-                th(scope="row")=index
-                td= instance["name"]
-                td= instance["email"]
-                td= instance["address"]
-        else
-            tr
-                td No Data
+    //table(class='table')
+            thead
+                tr
+                    th(scope="col") #             
+                    th(scope="col") Time Difference
+                    th(scope="col") Name
+                    th(scope="col") Email
+                    th(scope="col") Address
+                    th(scope="col") Phone
+                    th(scope="col") Location Type
+                    th(scope="col") Food
+                    th(scope="col") Amount of Food    
+            each instance, index in data
+                tr
+                    th(scope="row")=index
+                    td= instance["elapsed"]
+                    td= instance["name"]
+                    td= instance["email"]
+                    td= instance["address"]
+                    td= instance["phone"]
+                    td= instance["center"]
+                    td= instance["food"]
+                    td= instance["foodamt"]
+
+            else
+                tr
+    each instance, index in data
+            .card
+                .card-header.text-center.bg-secondary
+                    strong= instance["food"]
+                .card-body.bg-light= instance["elapsed"]
+                .card-footer.bg-dark.text-light.text-center
+                    strong= instance["name"]
+

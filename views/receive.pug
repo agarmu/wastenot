@@ -16,29 +16,30 @@ block content
                 button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                 button.btn.btn-primary(type='button') Save changes
 
-    each instance, index in data
+    each doc, i in data
         .card(style="width: 18rem")
             .card-header.text-center.bg-secondary
-                strong= instance["food"]
+                strong= doc.food
+                    head
+                        meta(charset="UTF-8")
+                        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+                        title Document
+                    body.food
             .card-body.bg-light.text-dark
                 ul.list-group.list-group-flush
-                    li.list-group-item Uploaded #{instance["elapsed"]}
-                    li.list-group-item From #{instance["address"]}
-                    li.list-group-item By #{instance["name"]}
+                    li.list-group-item Uploaded #{doc.elapsed}
+                    li.list-group-item From #{doc.address}
+                    li.list-group-item By #{doc.name}
 
             .card-footer.bg-dark.text-light.text-center
-                button.btn.btn-light(type='button' data-toggle='modal' data-target=`#MyModal${index}` onclick='alert(Hi)') Get More Information
-
-        .modal.fade(id=`#MyModal${index}` tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
-                .modal-dialog.bg-light(role='document')
-                    .modal-content
-                    .modal-header
-                        h5#exampleModalLabel.modal-title Modal title
-                        button.close(type='button' data-dismiss='modal' aria-label='Close')
-                        span(aria-hidden='true') &times;
-                    .modal-body
-                        | ...
-                    .modal-footer
-                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                        button.btn.btn-primary(type='button') Save changes
+                button.btn.btn-light(type='button' data-toggle='modal' data-target=('#info-modal' + i)) Get More Information
+        .modal.fade(id= ('info-modal' + i) role='dialog')
+                    .modal-dialog
+                        .modal-content
+                            .modal-header
+                                h2 Invite users
+                                button.close(type='button' data-dismiss='modal') &times;
+                            .modal-body=doc.timestamp
+                            .modal-footer
+                                button.btn.btn-primary(type='button' data-dismiss='modal') Close
 

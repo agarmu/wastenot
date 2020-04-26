@@ -1,16 +1,48 @@
 extends layout
 
-block content 
+block content
+    if(errors.length > 0)
+        #errorModal.modal.modalAtLoad.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='false')
+            .modal-dialog.bg-light(role='document')
+                .modal-content
+                .modal-header.text-center
+                    h5#errorModalLabel.modal-title Errors
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    ul.list-group
+                        each error in errors
+                            li.list-group-item= error.msg
+                .modal-footer
+                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+    ul.list-group.text-danger
+        each error in errors
+            li.list-group-item= error.msg 
     form.text-center.border.border-light.p-5(action='/donate' method='post')
-        input.form-control.mb-4(type='input', placeholder='Name' name='name')
-        // Email
-        input.form-control.mb-4(type='email', placeholder='E-mail' name='email')
-        input.form-control.mb-4(type='tel', placeholder='Phone number' name='phone')
-        // Inputs
-        input.form-control.mb-4(type='input', placeholder='Address' name='address')
-        input.form-control.mb-4(type='input', placeholder='Type of Business' name='business')
-        input.form-control.mb-4(type='input', placeholder='Type of Food/Cuisine' name='food')
-        input.form-control.mb-4(type='input', placeholder='Quantity' name='amt')
+        input.form-control.mb-4(value=form.name type='input', placeholder='Name' name='name')
+        input.form-control.mb-4(value= form.email type='input', placeholder='E-mail' name='email')
+        input.form-control.mb-4(value= form.phone type='input', placeholder='Phone number' name='phone')
+        input.form-control.mb-4(value= form.address type='input', placeholder='Address' name='address')
+        input.form-control.mb-4(value= form.orgtype type='input', placeholder='Type of Business' name='orgtype')
+        input.form-control.mb-4(value= form.cuisine type='input', placeholder='Cuisine' name='cuisine')
+        .row
+            .column
+                input.form-control.mb-4(value= form.food type='input', placeholder='Food' name='food')
+            .column
+                input.form-control.mb-4(value= form.amt type='input', placeholder='Quantity' name='amt')
+            .column
+                select.form-control.mb-4(value= form.units type='input', placeholder='Units' name='units')
+                    option(value='lbs') pounds
+                    option(value='oz') ounces
+                    option(value='kg') kilograms
+                    option(value='g') grams
+                    option(value='fl.oz') fluid ounces
+                    option(value='cup') cups
+                    option(value='pint') pints
+                    option(value='quart') quarts
+                    option(value='gallon') gallons
+                    option(value='liter') liters
+            
         
         .d-flex.justify-content-around
         div

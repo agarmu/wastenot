@@ -3,10 +3,11 @@
 @import "../../node_modules/bootstrap/scss/mixins";
 
 $theme-colors: (
-    "primary" : darken(#5cb85c, 20%),
-    "secondary":lighten(#428bca, 10%),
-    "success": darken(#428bca, 6.5%),
-    "info" : #5bd4d4,
+    "primary" : #428BCA,
+    "secondary" : #80789f,
+    "info" : #8eafb6,
+    "dark" : #33527d,
+    "light" : #f3e4f3,
     "warning" : #b6be44,
     "danger" : #b93e3e
 

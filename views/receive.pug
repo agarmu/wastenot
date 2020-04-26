@@ -1,45 +1,33 @@
 extends layout
 
 block content
-    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal') Launch Demo Modal
-    // Modal
-    #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='false')
-        .modal-dialog.bg-light(role='document')
-            .modal-content
-            .modal-header
-                h5#exampleModalLabel.modal-title Modal title
-                button.close(type='button' data-dismiss='modal' aria-label='Close')
-                span(aria-hidden='true') &times;
-            .modal-body
-                | ...
-            .modal-footer
-                button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                button.btn.btn-primary(type='button') Save changes
+    .card-columns
+        each doc, i in data
+            .card.bg-info(style="width: 18rem")
+                .card-header.text-center.bg-secondary.text-white
+                    h5 #[strong=doc.food.name]
+                        head
+                            meta(charset="UTF-8")
+                            meta(name="viewport", content="width=device-width, initial-scale=1.0")
+                            title Document
+                        body.food
+                .card-body.bg-dark.text-light
+                    ul.list-group.list-group-flush.bg-dark
+                        li.list-group-item.bg-dark Uploaded #{doc.elapsed}
+                        li.list-group-item.bg-dark From #{doc.address}
+                        li.list-group-item.bg-dark By #{doc.name}
 
-    each doc, i in data
-        .card(style="width: 18rem")
-            .card-header.text-center.bg-secondary
-                strong= doc.food
-                    head
-                        meta(charset="UTF-8")
-                        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-                        title Document
-                    body.food
-            .card-body.bg-light.text-dark
-                ul.list-group.list-group-flush
-                    li.list-group-item Uploaded #{doc.elapsed}
-                    li.list-group-item From #{doc.address}
-                    li.list-group-item By #{doc.name}
-
-            .card-footer.bg-dark.text-light.text-center
-                button.btn.btn-light(type='button' data-toggle='modal' data-target=('#info-modal' + i)) Get More Information
-        .modal.fade(id= ('info-modal' + i) role='dialog')
-                    .modal-dialog
-                        .modal-content
-                            .modal-header.text-center
-                                h2 Invite users
-                                button.close(type='button' data-dismiss='modal') &times;
-                            .modal-body=doc.timestamp
-                            .modal-footer
-                                button.btn.btn-primary(type='button' data-dismiss='modal') Close
+                .card-footer.bg-dark.text-light.text-center
+                    button.btn.btn-light(type='button' data-toggle='modal' data-target=('#info-modal' + i)) Get More Information
+            .modal.fade(id= ('info-modal' + i) role='dialog')
+                        .modal-dialog
+                            .modal-content
+                                .modal-header.text-center
+                                    h2 Invite users
+                                    button.close(type='button' data-dismiss='modal') &times;
+                                .modal-body=doc.timestamp
+                                .modal-footer
+                                    button.btn.btn-primary(type='button' data-dismiss='modal') Close
+        else
+            h1 No data to display
 

@@ -67,8 +67,8 @@ router.post('/',[
       phone: phone,
       orgtype: orgtype,
       location: {
-        input: '',
-        geojson: {}
+        input: addr,
+        geojson: geodata
       },
       food : {
         cuisine: cuisine,
@@ -83,11 +83,8 @@ router.post('/',[
         }
       }
     }
-    data.location.input = addr;
-    data.location.geojson = geodata;
 
-    console.log(data);
-    let instance = new DonationsModel();
+    let instance = new DonationsModel(data);
     instance.save((err, doc)=>{
       if(!err){
         res.render('donate',{ 

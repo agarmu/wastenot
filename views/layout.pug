@@ -5,9 +5,12 @@ html
     link(rel= 'stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/custom.css')
   body
-    script(src="/javascripts/bootstrap.min.js")
     div(class='jumbotron big-banner text-center bg-primary text-white')
-        h1(class='site-title')= title
-        h3= description
+      h1(class='site-title')= title
+      h3= description
     .container
       block content
+    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+    

@@ -1,37 +1,44 @@
 extends layout
 
 block content
-    //table(class='table')
-            thead
-                tr
-                    th(scope="col") #             
-                    th(scope="col") Time Difference
-                    th(scope="col") Name
-                    th(scope="col") Email
-                    th(scope="col") Address
-                    th(scope="col") Phone
-                    th(scope="col") Location Type
-                    th(scope="col") Food
-                    th(scope="col") Amount of Food    
-            each instance, index in data
-                tr
-                    th(scope="row")=index
-                    td= instance["elapsed"]
-                    td= instance["name"]
-                    td= instance["email"]
-                    td= instance["address"]
-                    td= instance["phone"]
-                    td= instance["center"]
-                    td= instance["food"]
-                    td= instance["foodamt"]
+    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal') Launch Demo Modal
+    // Modal
+    #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+        .modal-dialog.bg-light(role='document')
+            .modal-content
+            .modal-header
+                h5#exampleModalLabel.modal-title Modal title
+                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                span(aria-hidden='true') &times;
+            .modal-body
+                | ...
+            .modal-footer
+                button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                button.btn.btn-primary(type='button') Save changes
 
-            else
-                tr
     each instance, index in data
-            .card
-                .card-header.text-center.bg-secondary
-                    strong= instance["food"]
-                .card-body.bg-light= instance["elapsed"]
-                .card-footer.bg-dark.text-light.text-center
-                    strong= instance["name"]
+        .card(style="width: 18rem")
+            .card-header.text-center.bg-secondary
+                strong= instance["food"]
+            .card-body.bg-light.text-dark
+                ul.list-group.list-group-flush
+                    li.list-group-item Uploaded #{instance["elapsed"]}
+                    li.list-group-item From #{instance["address"]}
+                    li.list-group-item By #{instance["name"]}
+
+            .card-footer.bg-dark.text-light.text-center
+                button.btn.btn-light(type='button' data-toggle='modal' data-target=`#MyModal${index}`) Get More Information
+
+        .modal.fade(id=`#MyModal${index}` tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+                .modal-dialog.bg-light(role='document')
+                    .modal-content
+                    .modal-header
+                        h5#exampleModalLabel.modal-title Modal title
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                        span(aria-hidden='true') &times;
+                    .modal-body
+                        | ...
+                    .modal-footer
+                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                        button.btn.btn-primary(type='button') Save changes
 

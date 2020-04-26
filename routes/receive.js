@@ -10,11 +10,14 @@ router.get('/', function(req, res, next) {
   //  title: 'Receive Food',
   //  description: 'Use our tool to find food donations' 
   //});
-
   ReceiveModel.find( (err, docs)=>{
       if(!err){
         console.log(docs)
-        res.send(docs);
+        res.render('receive', {
+          title : 'Receive Food',
+          description : 'Use our tool to find food donations',
+          data : docs
+        });
       }else{
         res.send(err);
       }

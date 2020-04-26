@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    table
+        tr
+            th Name
+            th Email
+            th Address
+        each instance in data
+            tr
+                td= instance["name"]
+                td= instance["email"]
+                td= instance["address"]
+        else
+            tr
+                td No Data

@@ -27,7 +27,7 @@ block content
                     li.list-group-item By #{instance["name"]}
 
             .card-footer.bg-dark.text-light.text-center
-                button.btn.btn-light(type='button' data-toggle='modal' data-target=`#MyModal${index}`) Get More Information
+                button.btn.btn-light(type='button' data-toggle='modal' data-target=`#MyModal${index}` onclick='alert(Hi)') Get More Information
 
         .modal.fade(id=`#MyModal${index}` tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
                 .modal-dialog.bg-light(role='document')

@@ -11,14 +11,10 @@ router.get('/', function(req, res, next) {
   //  description: 'Use our tool to find food donations' 
   //});
 
-  let data = new ReceiveModel();
-  data.name = "Mukul Agarwal"
-  data.email = "agarmukul23@gmail.com"
-  data.save();
   ReceiveModel.find( (err, docs)=>{
       if(!err){
         console.log(docs)
-        res.send("Course Controller");
+        res.send(docs);
       }else{
         res.send(err);
       }

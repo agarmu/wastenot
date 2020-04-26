@@ -7,21 +7,7 @@
 const app = require('../app');
 const debug = require('debug')('new-website:server');
 const http = require('http');
-const mongoose = require('mongoose');
-require('dotenv').config();
 
-
-mongoose.connect(process.env.MONGOS, { useNewUrlParser: true, useUnifiedTopology: true }, (error)=>{
-  if(error)
-    {
-      console.log("Error connecting to database");
-      console.log(error)
-    }
-  else
-    {
-        console.log("Success!");
-    }
-});
 
 /**
  * Get port from environment and store in Express.

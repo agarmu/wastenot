@@ -2,7 +2,7 @@ const mongoose= require('mongoose');
 
 let DonateSchema = new mongoose.Schema({
     timestamp : {
-        type: String,
+        type: Date,
         required: "Required"
     },
     name : {
@@ -29,7 +29,7 @@ let DonateSchema = new mongoose.Schema({
         required : "Required"
     },
     foodamt : {
-        type : Number,
+        type : String,
         required : "Required"
     }
     

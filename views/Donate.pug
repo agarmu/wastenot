@@ -1,15 +1,16 @@
 extends layout
 
 block content 
-    form.text-center.border.border-light.p-5(action='#!')
+    form.text-center.border.border-light.p-5(action='/donate' method='post')
+        input.form-control.mb-4(type='input', placeholder='Name')
         // Email
-        input.form-control.mb-4(type='input', placeholder='E-mail')
+        input.form-control.mb-4(type='email', placeholder='E-mail')
+        input.form-control.mb-4(type='tel', placeholder='Phone number')
         // Inputs
         input.form-control.mb-4(type='input', placeholder='Address')
-        input.form-control.mb-4(type='input', placeholder='Name')
         input.form-control.mb-4(type='input', placeholder='Type of Business')
         input.form-control.mb-4(type='input', placeholder='Type of Food/Cuisine')
-        input.form-control.mb-4(type='input', placeholder='Quanity')
+        input.form-control.mb-4(type='input', placeholder='Quantity')
         
         .d-flex.justify-content-around
         div

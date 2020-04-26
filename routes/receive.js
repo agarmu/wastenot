@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   //  title: 'Receive Food',
   //  description: 'Use our tool to find food donations' 
   //});
-  let data = new ReceiveModel();
+  /*let data = new ReceiveModel();
   data.timestamp = "Today";
   data.name = "Mukul";
   data.email = "abc@def.com";
@@ -19,11 +19,10 @@ router.get('/', function(req, res, next) {
   data.center = "School";
   data.food = "HaHaHa";
   data.foodamt = 22;
-  data.save();
+  data.save();*/
 
   ReceiveModel.find( (err, docs)=>{
       if(!err){
-        console.log(docs)
         res.render('receive', {
           title : 'Receive Food',
           description : 'Use our tool to find food donations',

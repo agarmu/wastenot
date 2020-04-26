@@ -1,13 +1,16 @@
 extends layout
 
 block content
-    table
-        tr
-            th Name
-            th Email
-            th Address
-        each instance in data
+    table(class=table)
+        thead
             tr
+                th(scope="col") #
+                th(scope="col") Name
+                th(scope="col") Email
+                th(scope="col") Address
+        each instance, index in data
+            tr
+                th(scope="row")=index
                 td= instance["name"]
                 td= instance["email"]
                 td= instance["address"]

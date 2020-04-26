@@ -17,9 +17,12 @@
     "http-errors": "~1.6.3",
     "moment": "^2.24.0",
     "mongoose": "^5.9.10",
+    "mongoose-geojson-schema": "^2.1.5",
     "morgan": "~1.9.1",
     "popper.js": "^1.16.1",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"

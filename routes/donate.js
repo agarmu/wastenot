@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const { check, validationResult } = require("express-validator");
 const router = express.Router();
 const DonationsModel = mongoose.model("donations");
+const request = require('request');
 let formData = {}
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,9 +20,6 @@ router.post('/',[
   check('name')
     .isLength({min : 1})
     .withMessage('Name Empty'),
-  check('name')
-    .isAlpha()
-    .withMessage("Name may be composed of only letters."),
   check('email')
     .isEmail()
     .withMessage("Email Invalid"),
@@ -29,6 +27,7 @@ router.post('/',[
     .isNumeric()
     .withMessage("Phone Number Invalid"),
   check('address')
+    .trim()
     .isLength({min: 1})
     .withMessage("Address Empty"),
   check('cuisine')
@@ -36,36 +35,85 @@ router.post('/',[
     .withMessage("Invalid Cuisine Type"),
   check('amt')
     .isNumeric()
-    .withMessage("Quantity must be a number")
+    .withMessage("Quantity must be a number"),
 
 ], (req, res, next)=>{
 
   const errors = validationResult(req);
+  
+  if(errors.isEmpty){
+    const timestamp = new Date();
+    const name = req.body.name;
+    const email = req.body.email;
+    const phone = parseInt(req.body.phone);
+    const addr = req.body.address;
+    const geodata = request(`http://photon.komoot.de/api/?q=${addr.replace(/\s/g,'+')}`, { json: true }, (err, resp, body) => {
+      if(err) { return console.log(err); }
+       return body;
+    });
+    const orgtype = req.body.orgtype;
+    const cuisine = req.body.cuisine;
+    const foodName = req.body.food;
+    const foodAmt = parseInt(req.body.amt);
+    const foodUnits = req.body.units;
+    const isHalal = (req.body.halal == 'yes') || false;
+    const isKosher = (req.body.kosher == 'yes') || false;
+    const isVegetarian = (req.body.vegetarian == 'yes') || false;
+    const isVegan = ((req.body.vegan == 'yes') && isVegetarian) || false;
+    let data = {
+      timestamp: timestamp,
+      name: name,
+      email: email,
+      phone: phone,
+      orgtype: orgtype,
+      location: {
+        input: '',
+        geojson: {}
+      },
+      food : {
+        cuisine: cuisine,
+        name: foodName,
+        amount: foodAmt,
+        foodUnits: foodUnits,
+        dietary: {
+            halal: isHalal,
+            kosher: isKosher,
+            vegan: isVegan,
+            vegetarian: isVegetarian
+        }
+      }
+    }
+    data.location.input = addr;
+    data.location.geojson = geodata;
 
+    console.log(data);
+    let instance = new DonationsModel();
+    instance.save((err, doc)=>{
+      if(!err){
+        res.render('donate',{ 
+          title: 'Donate',
+          description: 'Consider Donating Food',
+          errors: errors.array(),
+          form: req.body
+        });
+      }else{
+        res.send("Error Occured");
+      }
+  });
+
+}else{
   res.render('donate',{ 
     title: 'Donate',
     description: 'Consider Donating Food',
     errors: errors.array(),
     form: req.body
   });
+}
+  
+  
   
 
-  /*let data = new DonationsModel();
-  data.timestamp = new Date();
-  data.name = req.body.name;
-  data.email = req.body.email;
-  data.address = req.body.address;
-  data.phone = req.body.phone;
-  data.center = req.body.business;
-  data.food = req.body.food;
-  data.foodamt = req.body.amt;
-  data.save((err, doc)=>{
-      if(!err){
-        res.redirect("/donate");
-      }else{
-        res.send("Error Occured");
-      }
-  });*/
+  
 });
 
 module.exports = router;

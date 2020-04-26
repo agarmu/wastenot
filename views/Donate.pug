@@ -19,19 +19,19 @@ block content
         each error in errors
             li.list-group-item= error.msg 
     form.text-center.border.border-light.p-5(action='/donate' method='post')
-        input.form-control.mb-4(value=form.name type='input', placeholder='Name' name='name')
-        input.form-control.mb-4(value= form.email type='input', placeholder='E-mail' name='email')
-        input.form-control.mb-4(value= form.phone type='input', placeholder='Phone number' name='phone')
-        input.form-control.mb-4(value= form.address type='input', placeholder='Address' name='address')
-        input.form-control.mb-4(value= form.orgtype type='input', placeholder='Type of Business' name='orgtype')
-        input.form-control.mb-4(value= form.cuisine type='input', placeholder='Cuisine' name='cuisine')
-        .row
-            .column
-                input.form-control.mb-4(value= form.food type='input', placeholder='Food' name='food')
-            .column
-                input.form-control.mb-4(value= form.amt type='input', placeholder='Quantity' name='amt')
-            .column
-                select.form-control.mb-4(value= form.units type='input', placeholder='Units' name='units')
+        input.form-control.mb-4(value=form.name type='input' placeholder='Name' name='name')
+        input.form-control.mb-4(value= form.email type='input' placeholder='E-mail' name='email')
+        input.form-control.mb-4(value= form.phone type='input' placeholder='Phone number' name='phone')
+        input.form-control.mb-4(value= form.address type='input' placeholder='Address' name='address')
+        input.form-control.mb-4(value= form.orgtype type='input' placeholder='Type of Business' name='orgtype')
+        input.form-control.mb-4(value= form.cuisine type='input' placeholder='Cuisine' name='cuisine')
+        .form-row
+            .col
+                input.form-control.mb-4(value= form.food type='input' placeholder='Food' name='food')
+            .col
+                input.form-control.mb-4(value= form.amt type='input' placeholder='Quantity' name='amt')
+            .col
+                select.form-control.mb-4(value= form.units type='input' placeholder='Units' name='units')
                     option(value='lbs') pounds
                     option(value='oz') ounces
                     option(value='kg') kilograms
@@ -42,12 +42,23 @@ block content
                     option(value='quart') quarts
                     option(value='gallon') gallons
                     option(value='liter') liters
-            
-        
+        .form-row
+            .form-check.form-check-inline.col
+                input.form-check-input(type='checkbox' id='halal' value='yes' name='halal')  
+                label.form-check-label(for='halal') Halal
+            .form-check.form-check-inline.col
+                input.form-check-input(type='checkbox' id='kosher' value='yes' name='kosher')  
+                label.form-check-label(for='kosher') Kosher
+            .form-check.form-check-inline.col
+                input.form-check-input(type='checkbox' id='vegan' value='yes' name='vegan')  
+                label.form-check-label(for='vegan') Vegan
+            .form-check.form-check-inline.col
+                input.form-check-input(type='checkbox' id='vegetarian' value='yes' name='vegetarian' )  
+                label.form-check-label(for='vegetarian') Vegetarian
         .d-flex.justify-content-around
         div
         // Submit button
         button.btn.btn-primary.btn-block.my-4(type='submit') Submit
-        
+
 
 

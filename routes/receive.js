@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
         res.render('receive', {
           title : 'Receive Food',
           description : 'Use our tool to find food donations',
-          data : simplifyData(docs)
+          data : simplifyData(docs).reverse()
         });
       }else{
         res.send(err);

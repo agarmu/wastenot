@@ -6,6 +6,8 @@
     "start": "node ./bin/www",
     "test": "nodemon ./bin/www",
     "bootstrap-compile": "sass ./public/stylesheets/bootstrap.scss ./public/stylesheets/bootstrap.css"
+    "deploy-master": "git push -f heroku master:refs/heads/master"
+    "deploy-Dev": "git push -f heroku Dev:refs/heads/master"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",

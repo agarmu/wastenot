@@ -32,7 +32,11 @@ jobs:
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Login to heroku
+      run: heroku login
 
     - name: Add mongodb connection string to heroku env vars
       run: heroku config:set MONGOS=${{ secrets.MONGOS }}

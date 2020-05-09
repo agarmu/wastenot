@@ -1,7 +1,3 @@
-# NEEDED SECRETS
-### HEROKU_API_KEY
-### HEROKU_APP_NAME
-### MONGOS - MongoDB Connection string
 name: Deploy
 
 on:
@@ -28,3 +24,8 @@ jobs:
 
     - name: Push to Heroku
       run: git push heroku master
+
+# NEEDED SECRETS
+### HEROKU_API_KEY
+### HEROKU_APP_NAME
+### MONGOS - MongoDB Connection string

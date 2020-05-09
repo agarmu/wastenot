@@ -36,7 +36,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Add MongoDB connection string to Heroku Config Vars
-      run: heroku config:set MONGOS=${{ secrets.MONGOS }} -app ${{ secrets.HEROKU_APP_NAME }}
+      run: heroku config:set MONGOS=${{ secrets.MONGOS }} --app ${{ secrets.HEROKU_APP_NAME }}
 
     - name: Add remote
       run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}

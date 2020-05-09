@@ -35,11 +35,8 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
 
-    - name: Login to heroku
-      run: heroku login
-
-    - name: Add mongodb connection string to heroku env vars
-      run: heroku config:set MONGOS=${{ secrets.MONGOS }}
+    - name: Add MongoDB connection string to Heroku Config Vars
+      run: heroku config:set MONGOS=${{ secrets.MONGOS }} -app ${{ secrets.HEROKU_APP_NAME }}
 
     - name: Add remote
       run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}

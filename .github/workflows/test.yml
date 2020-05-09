@@ -61,7 +61,10 @@ jobs:
       run: heroku git:remote -a "$HEROKU_APP_NAME"
 
     - name: Push to Heroku
-      run: git push heroku master
+      run: |
+        pwd
+        ls
+        git push heroku master
 
 # NEEDED SECRETS
 ### HEROKU_API_KEY

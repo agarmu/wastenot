@@ -53,6 +53,7 @@ jobs:
               "password": "$HEROKU_API_TOKEN"
             }
           ]
+      run: git config --global url.ssh://git@heroku.com/.insteadOf https://git.heroku.com/
 
     - name: Add MongoDB connection string to Heroku Config Vars
       run: heroku config:set MONGOS=$MONGOS --app "$HEROKU_APP_NAME"

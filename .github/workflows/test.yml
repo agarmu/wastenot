@@ -45,12 +45,12 @@ jobs:
           [
             {
               "machine": "git.heroku.com",
-              "login": "",
+              "login": "doesntmatter",
               "password": "$HEROKU_API_TOKEN"
             },
             {
               "machine": "api.heroku.com",
-              "login": "",
+              "login": "doesntmatter",
               "password": "$HEROKU_API_TOKEN"
             }
           ]

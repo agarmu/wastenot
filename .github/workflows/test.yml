@@ -62,7 +62,7 @@ jobs:
 
     - name: Push to Heroku
       run: |
-        pwd
+        git remote -v
         ls
         git push heroku master
 

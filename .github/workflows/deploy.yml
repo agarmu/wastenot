@@ -2,7 +2,7 @@
 ### HEROKU_API_KEY
 ### HEROKU_APP_NAME
 ### MONGOS - MongoDB Connection string
-name: Test
+name: Deploy
 
 on:
   push:

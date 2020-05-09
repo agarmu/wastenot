@@ -30,20 +30,19 @@ jobs:
   deploy:
     if: ${{ github.ref == 'master' }}
     needs: test
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+    env: 
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+    runs-on: ubuntu-latest
 
-      runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
 
-      steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+    - name: Add mongodb connection string to heroku env vars
+      run: heroku config:set MONGOS=${{ secrets.MONGOS }}
 
-      - name: Add mongodb connection string to heroku env vars
-        run: heroku config:set MONGOS=${{ secrets.MONGOS }}
-        
-      - name: Add remote
-        run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
-          
-      - name: Push to Heroku
-        run: git push heroku master
+    - name: Add remote
+      run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
+
+    - name: Push to Heroku
+      run: git push heroku master

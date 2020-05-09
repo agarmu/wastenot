@@ -1,4 +1,4 @@
-name: Deploy
+name: Deployold
 
 on:
   push:
@@ -6,8 +6,9 @@ on:
       - master
 
 jobs:
-  deploy:
+  deployold:
     needs: test
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push' 
     env: 
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
     runs-on: ubuntu-latest

@@ -22,3 +22,28 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push' 
+    env: 
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Add mongodb connection string to heroku env vars
+      run: heroku config:set MONGOS=${{ secrets.MONGOS }}
+
+    - name: Add remote
+      run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
+
+    - name: Push to Heroku
+      run: git push heroku master
+
+# NEEDED SECRETS
+### HEROKU_API_KEY
+### HEROKU_APP_NAME
+### MONGOS - MongoDB Connection string

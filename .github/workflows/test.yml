@@ -1,0 +1,69 @@
+# Required GitHub Secrets
+### HEROKU_API_KEY
+### HEROKU_APP_NAME
+### MONGOS - MongoDB Connection string
+
+name: Test/Deploy
+
+on:
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches: 
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push' 
+    env: 
+      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      MONGOS: ${{ secrets.MONGOS }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Apply netrc creds (allows us to edit Heroku config vars)
+      uses: little-core-labs/netrc-creds@v1
+      with:
+        creds: |
+          [
+            {
+              "machine": "git.heroku.com",
+              "login": "doesntmatter",
+              "password": "$HEROKU_API_TOKEN"
+            },
+            {
+              "machine": "api.heroku.com",
+              "login": "doesntmatter",
+              "password": "$HEROKU_API_TOKEN"
+            }
+          ]
+
+    - name: Add MongoDB connection string to Heroku Config Vars
+      run: heroku config:set MONGOS="$MONGOS" --app "$HEROKU_APP_NAME"
+
+    - name: Deploy to Heroku
+      uses: akhileshns/heroku-deploy@v3.0.4
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: "$HEROKU_APP_NAME"
+        heroku_email: "unused"
+        buildpack: "heroku/nodejs"

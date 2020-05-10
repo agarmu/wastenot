@@ -81,7 +81,8 @@ jobs:
     - name: Add MongoDB connection string to Heroku Config Vars
     run: heroku config:set MONGOS="$MONGOS" --app "$HEROKU_APP_NAME"
 
-    - uses: akhileshns/heroku-deploy@v3.0.4
+    - name: Deploy to Heroku
+    uses: akhileshns/heroku-deploy@v3.0.4
     with:
       heroku_api_key: "$HEROKU_API_KEY"
       heroku_app_name: "$HEROKU_APP_NAME"

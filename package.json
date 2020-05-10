@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "nodemon ./bin/www",
-    "bootstrap-compile": "sass ./public/stylesheets/bootstrap.scss ./public/stylesheets/bootstrap.css"
+    "bootstrap-compile": "sass ./public/stylesheets/bootstrap.scss ./public/stylesheets/bootstrap.css",
+    "deploy-master": "git push -f heroku master:refs/heads/master",
+    "deploy-Dev": "git push -f heroku Dev:refs/heads/master"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
@@ -25,6 +27,7 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "sass": "^1.26.5"
   }
 }

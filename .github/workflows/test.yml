@@ -72,7 +72,7 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/master' && github.event_name == 'push' 
     env: 
-      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      # HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       MONGOS: ${{ secrets.MONGOS }}
     runs-on: ubuntu-latest
@@ -87,7 +87,7 @@ jobs:
     - name: Deploy to Heroku
       uses: akhileshns/heroku-deploy@v3.0.4
       with:
-        heroku_api_key: "$HEROKU_API_KEY"
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
         heroku_app_name: "$HEROKU_APP_NAME"
         heroku_email: "unused"
         buildpack: "heroku/nodejs" #OPTIONAL

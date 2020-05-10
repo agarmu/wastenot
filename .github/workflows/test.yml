@@ -1,3 +1,8 @@
+# Required GitHub Secrets
+### HEROKU_API_KEY
+### HEROKU_APP_NAME
+### MONGOS - MongoDB Connection string
+
 name: Test/Deploy
 
 on:
@@ -27,52 +32,6 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/master' && github.event_name == 'push' 
     env: 
-      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-      MONGOS: ${{ secrets.MONGOS }}
-    runs-on: ubuntu-latest
-
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Check out repository
-      uses: actions/checkout@v2
-
-    - name: Login to Heroku
-      uses: little-core-labs/netrc-creds@v1
-      with:
-        creds: |
-          [
-            {
-              "machine": "git.heroku.com",
-              "login": "doesntmatter",
-              "password": "$HEROKU_API_TOKEN"
-            },
-            {
-              "machine": "api.heroku.com",
-              "login": "doesntmatter",
-              "password": "$HEROKU_API_TOKEN"
-            }
-          ]
-
-    - name: Add MongoDB connection string to Heroku Config Vars
-      run: heroku config:set MONGOS="$MONGOS" --app "$HEROKU_APP_NAME"
-
-    - name: Add remote
-      run: |
-        heroku keys:add
-        heroku git:remote -a "$HEROKU_APP_NAME"
-
-    - name: Push to Heroku
-      run: |
-        git remote -v
-        ls
-        git push heroku master
-
-  deploy2:
-    needs: test
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push' 
-    env: 
-      # HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       MONGOS: ${{ secrets.MONGOS }}
     runs-on: ubuntu-latest
@@ -91,8 +50,3 @@ jobs:
         heroku_app_name: "$HEROKU_APP_NAME"
         heroku_email: "unused"
         buildpack: "heroku/nodejs" #OPTIONAL
-
-# NEEDED SECRETS
-### HEROKU_API_KEY
-### HEROKU_APP_NAME
-### MONGOS - MongoDB Connection string

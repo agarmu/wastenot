@@ -58,7 +58,9 @@ jobs:
       run: heroku config:set MONGOS="$MONGOS" --app "$HEROKU_APP_NAME"
 
     - name: Add remote
-      run: heroku git:remote -a "$HEROKU_APP_NAME"
+      run: |
+        heroku keys:add
+        heroku git:remote -a "$HEROKU_APP_NAME"
 
     - name: Push to Heroku
       run: |

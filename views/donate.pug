@@ -22,6 +22,12 @@ block content
         input.form-control.mb-4(value=form.name type='input' placeholder='Name' name='name')
         input.form-control.mb-4(value= form.email type='input' placeholder='E-mail' name='email')
         input.form-control.mb-4(value= form.phone type='input' placeholder='Phone number' name='phone')
+        select.form-control.mb-4(value= form.preferredcontact type='input' placeholder='Preferred Method of Contact' name='preferredcontact')
+                    option(value='NONE') Preferred Method of Contact
+                    option(value='Call') Phone Call
+                    option(value='SMS') SMS
+                    option(value='Email') Email
+                    option(value='Any') Any
         input.form-control.mb-4(value= form.address type='input' placeholder='City, State' name='address')
         input.form-control.mb-4(value= form.orgtype type='input' placeholder='Type of Business' name='orgtype')
         input.form-control.mb-4(value= form.cuisine type='input' placeholder='Cuisine' name='cuisine')
@@ -55,6 +61,9 @@ block content
             .form-check.form-check-inline.col
                 input.form-check-input(type='checkbox' id='vegetarian' value='yes' name='vegetarian' )  
                 label.form-check-label(for='vegetarian') Vegetarian
+            .form-check.form-check-inline.col
+                input.form-check-input(type='checkbox' id='perishable' value='yes' name='perishable' )  
+                label.form-check-label(for='perishable') Perishable
         .d-flex.justify-content-around
         div
         // Submit button

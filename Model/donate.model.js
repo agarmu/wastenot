@@ -1,10 +1,10 @@
-const mongoose= require('mongoose');
+const mongoose = require('mongoose');
 const GeoJSON = require('mongoose-geojson-schema')
 let DonateSchema = new mongoose.Schema({
-    timestamp :{type: Date, default: Date.now},
-    name : String,
-    email : String,
-    location : {
+    timestamp: { type: Date, default: Date.now },
+    name: String,
+    email: String,
+    location: {
         geojson: {
             any: mongoose.Schema.Types.GeoJSON,
             point: mongoose.Schema.Types.Point,
@@ -18,22 +18,24 @@ let DonateSchema = new mongoose.Schema({
             feature: mongoose.Schema.Types.Feature,
             featurecollection: mongoose.Schema.Types.FeatureCollection,
         },
-    input: String
+        input: String
     },
     phone: Number,
+    preferredcontact: { type: String, default: "Any" },
     orgtype: String,
-    food : {
-        cuisine: {type: String, default:"None"},
+    food: {
+        cuisine: { type: String, default: "None" },
         name: String,
         amount: Number,
         units: String,
+        perishable: { type: Boolean, default: false },
         dietary: {
-            halal: {type: Boolean, default: false},
-            kosher: {type: Boolean, default: false},
-            vegan: {type: Boolean, default: false},
-            vegetarian: {type: Boolean, default: false}
-        } 
-    },   
+            halal: { type: Boolean, default: false },
+            kosher: { type: Boolean, default: false },
+            vegan: { type: Boolean, default: false },
+            vegetarian: { type: Boolean, default: false }
+        }
+    },
 });
 
 mongoose.model("donations", DonateSchema)

@@ -14,7 +14,12 @@ block content
                 ul.list-group.list-group-flush.bg-dark
                     li.list-group-item.bg-dark #[i.material-icons access_time] #{doc.elapsed}
                     li.list-group-item.bg-dark #[i.material-icons room] #{doc.location.input}
+                    li.list-group-item.bg-dark #[i.material-icons contacts] #{doc.preferredcontact}
                     li.list-group-item.bg-dark  From: #{doc.name}
+                    if(doc.food.perishable)
+                                    li.list-group-item.bg-dark #[i.material-icons local_dining] Perishable
+                    else
+                        li.list-group-item.bg-dark #[i.material-icons local_dining] Non-perishable
 
             .card-footer.bg-dark.text-light.text-center
                 button.btn.btn-light(type='button' data-toggle='modal' data-target=('#info-modal' + i)) Get More Information
@@ -37,6 +42,11 @@ block content
                                 
                                 if(doc.food.dietary.vegetarian)
                                     p Vegetarian
+
+                                if(doc.food.dietary.perishable)
+                                    p Perishable
+                                else
+                                    p Non-Perishable
                                 
                             .modal-footer
                                 button.btn.btn-primary(type='button' data-dismiss='modal') Close

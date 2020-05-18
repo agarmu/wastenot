@@ -6,9 +6,7 @@ const DonationsModel = mongoose.model("donations");
 const request = require('request');
 let formData = {}
 /* GET home page. */
-function isEmpty(obj) {
-  return Object.keys(obj) == 0;
-}
+
 router.get('/', function(req, res, next) {
   res.render('donate', { 
     title: 'Donate',
@@ -44,9 +42,11 @@ router.post('/',
   ], 
   (req, res, next)=>{
 
-  const errors = validationResult(req);
-  
-  if(isEmpty(errors)){
+  const result = validationResult(req);
+  console.log(result['errors'].length);
+  if(result['errors'].length==0){
+    
+
     const timestamp = new Date();
     const name = req.body.name;
     const email = req.body.email;
@@ -93,14 +93,15 @@ router.post('/',
         }
       }
     }
-
     let instance = new DonationsModel(data);
     instance.save((err, doc)=>{
+      
+      
       if(!err){
         res.render('donate',{ 
           title: 'Donate',
           description: 'Consider Donating Food',
-          errors: errors.array(),
+          errors: [],
           form: req.body
         });
       }else{
@@ -112,7 +113,7 @@ router.post('/',
   res.render('donate',{ 
     title: 'Donate',
     description: 'Consider Donating Food',
-    errors: errors.array(),
+    errors: result.errors,
     form: req.body
   });
 }

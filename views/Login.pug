@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    if(errors.length > 0)
+        #errorModal.modal.modalAtLoad.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='false')
+            .modal-dialog.bg-light(role='document')
+                .modal-content
+                .modal-header.text-center
+                    h5#errorModalLabel.modal-title Errors
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    ul.list-group
+                        each error in errors
+                            
+                            li.list-group-item= error.msg
+                .modal-footer
+                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+    ul.list-group.text-danger
+        each error in errors
+            li.list-group-item= error.msg 
+    form.text-center.border.border-light.p-5(action='/Login' method='post')
+        input.form-control.mb-4(value= form.email type='input' placeholder='E-mail' name='email')
+        input.form-control.mb-4(value= form.password type='password' placeholder='password' name='password')
+        .d-flex.justify-content-around
+        div
+            // Submit button
+        button.btn.btn-primary.btn-block.my-4(type='submit') Submit    

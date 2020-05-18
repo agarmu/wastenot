@@ -15,3 +15,4 @@ mongoose.connect(process.env.MONGOS, { useNewUrlParser: true, useUnifiedTopology
 });
 
 const Donate = require('./donate.model.js')
+const Signup=require('./Signup.model.js')

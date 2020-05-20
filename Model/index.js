@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGOS, { useNewUrlParser: true, useUnifiedTopology
     }
   else
     {
-        console.log("Success!");
+        console.log("Successful MongoDB connection");
     }
 });
 

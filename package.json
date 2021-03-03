@@ -22,7 +22,7 @@
     "mongoose-geojson-schema": "^2.1.5",
     "morgan": "~1.9.1",
     "popper.js": "^1.16.1",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "querystring": "^0.2.0",
     "request": "^2.88.2"
   },
